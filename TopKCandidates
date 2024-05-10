@@ -1,0 +1,39 @@
+package onprojectassignment;
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class topKcandidates {
+    public static void main(String args[]){
+        Scanner obj=new Scanner(System.in);
+        System.out.print("Enter the value of K: ");
+        int k=obj.nextInt();
+        System.out.print("Enter the number of candiates: ");
+        int n=obj.nextInt();
+        int count=0;
+        TreeMap<Integer,String> candidates=new TreeMap<>(Collections.reverseOrder());
+
+
+        for(int i=0;i<n;i++){
+            obj.nextLine();
+            System.out.print("Enter the name: ");
+            String name=obj.nextLine();
+
+            System.out.print("Enter the mark: ");
+            int mark=obj.nextInt();
+            candidates.put(mark,name);
+        }
+        System.out.println(candidates);
+
+        for(Map.Entry<Integer,String> entry:candidates.entrySet()){
+            if(count>=k){
+                break;
+            }
+            System.out.println(entry.getValue()+ " : " +entry.getKey());
+            count++;
+        }
+        obj.close();
+    }
+}
